@@ -7,8 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +21,20 @@ jobs:
       run: yarn install
     - name: Run test
       run: yarn test
-    - run: echo "Done"
+    - run: echo "Test Success"
+
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
+        registry-url: 'https://registry.npmjs.org'
+    - name: Install dependencies
+      run: yarn install --immutable --immutable-cache --check-cache
     - name: Publish to 'npm'
       run: npm publish
       env:

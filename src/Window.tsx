@@ -32,7 +32,7 @@ const nextZIndex: () => number = () => {
   return maxZ + 1;
 };
 
-const Window = (props: WindowProps) => {
+const Window: React.FC<WindowProps> = (props: WindowProps) => {
   let properties = Object.assign(
     {
       id: props.id && props.id.length ? props.id : Date.now().toString(),

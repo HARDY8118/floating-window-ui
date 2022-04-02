@@ -57,6 +57,7 @@ test("Checking window properties", () => {
 });
 
 test("Autogeneratting window id", () => {
+  // @ts-ignore
   let { container } = render(<Window />);
 
   const testWindowAutoId =
