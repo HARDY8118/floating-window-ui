@@ -1,0 +1,51 @@
+div.window-container {
+  position: absolute;
+  border: solid 1px black;
+  --tilebar-height: 32px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+div.window-container > div.title-bar {
+  background-color: gray;
+  height: var(--tilebar-height);
+  display: flex;
+  flex-direction: row;
+}
+
+div.window-container > div.title-bar > span.icon {
+  height: var(--tilebar-height);
+  width: var(--tilebar-height);
+  font-size: calc(var(--tilebar-height) - 8px);
+}
+
+div.window-container > div.title-bar > span.windowTitle {
+  flex-grow: 1;
+  overflow: hidden;
+  text-align: left;
+  color: white;
+  font-size: calc(var(--tilebar-height) - 16px);
+  line-height: var(--tilebar-height);
+}
+
+div.window-container > div.title-bar > span.buttonContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+div.window-container
+  > div.title-bar
+  > span.buttonContainer
+  > span.windowButton {
+  height: var(--tilebar-height);
+  width: var(--tilebar-height);
+  font-size: calc(var(--tilebar-height) - 8px);
+  cursor: default;
+}
+
+div.window-container > div.content {
+  overflow: auto;
+  background-color: white;
+  flex-grow: 1;
+}
