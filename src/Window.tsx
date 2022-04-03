@@ -15,7 +15,7 @@ interface WindowProps {
     buttons?: {
       minimize?: boolean;
       maximize?: boolean;
-      close?: () => void;
+      close?: boolean;
     };
   };
 }
@@ -50,7 +50,7 @@ const Window: React.FC<WindowProps> = (props: WindowProps) => {
             {
               minimize: true,
               maximize: true,
-              close: () => {},
+              close: true,
             },
             (props.titleBar && props.titleBar.buttons) || {}
           ),

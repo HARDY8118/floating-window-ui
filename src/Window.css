@@ -15,6 +15,7 @@ div.window-container > div.title-bar {
 }
 
 div.window-container > div.title-bar > span.icon {
+  line-height: var(--tilebar-height);
   height: var(--tilebar-height);
   width: var(--tilebar-height);
   font-size: calc(var(--tilebar-height) - 8px);
