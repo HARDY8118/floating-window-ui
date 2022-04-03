@@ -1,20 +1,21 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import Window from "./Window";
-import userEvent from "@testing-library/user-event";
 
 test("Checking window properties", () => {
   let { container } = render(
-    <Window
-      id="test-window-1"
-      height={20}
-      width={20}
-      titleBar={{
-        icon: "☹",
-        title: "Test Window",
-        buttons: { minimize: true, maximize: true },
-      }}
-    />
+    <React.StrictMode>
+      <Window
+        id="test-window-1"
+        height={20}
+        width={20}
+        titleBar={{
+          icon: "☹",
+          title: "Test Window",
+          buttons: { minimize: true, maximize: true },
+        }}
+      />
+    </React.StrictMode>
   );
   // screen.debug();
   const testWindow =
@@ -57,8 +58,10 @@ test("Checking window properties", () => {
 });
 
 test("Autogeneratting window id", () => {
-  // @ts-ignore
-  let { container } = render(<Window />);
+  let { container } = render(
+    // @ts-ignore
+    <Window />
+  );
 
   const testWindowAutoId =
     container.querySelector<HTMLDivElement>(".window-container");

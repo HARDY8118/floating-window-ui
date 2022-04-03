@@ -13,11 +13,10 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    // "noEmit": true,
     "jsx": "react-jsx",
-    "outDir": "lib",
+    "outDir": "build",
     "declaration": true
   },
   "include": ["src/Window.tsx"],
-  "exclude": ["node_modules", "lib"]
+  "exclude": ["node_modules", "build"]
 }
