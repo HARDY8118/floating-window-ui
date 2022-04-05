@@ -12,6 +12,7 @@ div.window-container > div.title-bar {
   height: var(--tilebar-height);
   display: flex;
   flex-direction: row;
+  cursor: default;
 }
 
 div.window-container > div.title-bar > span.icon {
@@ -25,11 +26,16 @@ div.window-container > div.title-bar > span.windowTitle {
   flex-grow: 1;
   overflow: hidden;
   text-align: center;
+  background-color: gray;
   color: white;
   font-size: calc(var(--tilebar-height) - 16px);
   line-height: var(--tilebar-height);
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: bold;
+}
+
+div.window-container > div.title-bar > span.windowTitle:active {
+  opacity: 0.5;
 }
 
 div.window-container > div.title-bar > span.buttonContainer {

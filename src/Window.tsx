@@ -80,23 +80,31 @@ const Window: React.FC<WindowProps> = (props: WindowProps) => {
   const [contentDisplay, setContentDisplay] = React.useState<boolean>(true);
   const [windowTransition, setWindowTransition] = React.useState("");
   const [level, setLevel] = React.useState<number>(nextZIndex());
+  const [visibility, setWindowVisibility] = React.useState<number>(1.0);
 
-  const container = React.useRef(null);
-  const titleBar = React.useRef(null);
+  const container = React.useRef<HTMLDivElement>(null);
+  const windowTitle = React.useRef<HTMLSpanElement>(null);
   const effectiveHeight = useRef(height);
   const effectiveWidth = useRef(width);
 
   const animationDuration = 500;
 
-  const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
+  const handleDragStart = (e: React.DragEvent<HTMLSpanElement>) => {
     setYOffset(e.clientY - top);
     setXOffset(e.clientX - left);
     setLevel(nextZIndex());
+    setWindowVisibility(0.5);
   };
 
-  const handleMove = (e: React.DragEvent<HTMLDivElement>) => {
-    setLeft(e.clientX - xOffset);
-    setTop(e.clientY - yOffset);
+  const handleDrag = (e: MouseEvent | React.MouseEvent) => {
+    setLeft((e.clientX || e.screenX || xOffset) - xOffset);
+    setTop((e.clientY || e.screenY || yOffset) - yOffset);
+  };
+
+  const handleDragEnd = (e: React.DragEvent<HTMLSpanElement>) => {
+    setLeft((e.clientX || e.screenX) - xOffset);
+    setTop((e.clientY || e.screenY) - yOffset);
+    setWindowVisibility(1.0);
   };
 
   const minimize = () => {
@@ -186,6 +194,7 @@ const Window: React.FC<WindowProps> = (props: WindowProps) => {
         resize: properties.resizable ? "both" : "none",
         transition: windowTransition,
         zIndex: level,
+        opacity: visibility,
       }}
       ref={container}
       onClick={() => {
@@ -193,21 +202,27 @@ const Window: React.FC<WindowProps> = (props: WindowProps) => {
       }}
     >
       {properties.titleBar && (
-        <div className="title-bar" ref={titleBar}>
+        <div
+          className="title-bar"
+          data-parent={properties.id}
+          style={{
+            opacity: visibility,
+          }}
+        >
           {properties.titleBar.icon && (
             <span className="icon">{properties.titleBar.icon}</span>
           )}
-          {properties.titleBar.title && (
-            <span
-              className="windowTitle"
-              draggable={true}
-              onDragStart={handleDragStart}
-              onDrag={handleMove}
-              onDragEnd={handleMove}
-            >
-              {properties.titleBar.title}
-            </span>
-          )}
+          <span
+            className="windowTitle"
+            draggable={true}
+            onDragStart={handleDragStart}
+            onDrag={handleDrag}
+            onDragEnd={handleDragEnd}
+            style={{ opacity: Math.floor(visibility) }}
+            ref={windowTitle}
+          >
+            {properties.titleBar.title}
+          </span>
           {properties.titleBar.buttons && (
             <span className="buttonContainer">
               {properties.titleBar.buttons.minimize && (
@@ -230,6 +245,7 @@ const Window: React.FC<WindowProps> = (props: WindowProps) => {
         draggable="false"
         style={{
           height: contentDisplay ? "auto" : 0,
+          opacity: visibility,
         }}
       >
         {properties.children}
