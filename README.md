@@ -106,9 +106,8 @@ For contributing open a Pull Request with any changes/suggestions. Any kind of c
 
 ## Known Issues
 
-**Firefox** sets value for `e.clientX` and `e.clientY` as `0` for `drag`, `dragStart` and `dragEnd` events, which does 
-not allows position updates for drag and drop. Refer [
-Set screen coordinates during HTML5 drag event
-](https://bugzilla.mozilla.org/show_bug.cgi?id=505521#c80) and [Why is event.clientX incorrectly showing as 0 in firefox for dragend event?](https://stackoverflow.com/questions/11656061/why-is-event-clientx-incorrectly-showing-as-0-in-firefox-for-dragend-event).
+Due to a bug in Firefox, the window does not moves with the mouse while dragging but will move to final position on dropping.
+
+Refer [Set screen coordinates during HTML5 drag event](https://bugzilla.mozilla.org/show_bug.cgi?id=505521#c80)
 
 Also see [Dragging window on Firefox](https://github.com/HARDY8118/floating-window-ui/issues/1)
