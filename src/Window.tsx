@@ -97,8 +97,8 @@ const Window: React.FC<WindowProps> = (props: WindowProps) => {
   };
 
   const handleDrag = (e: MouseEvent | React.MouseEvent) => {
-    setLeft((e.clientX || e.screenX || xOffset) - xOffset);
-    setTop((e.clientY || e.screenY || yOffset) - yOffset);
+    setLeft((e.clientX || e.screenX || left + xOffset) - xOffset);
+    setTop((e.clientY || e.screenY || top + yOffset) - yOffset);
   };
 
   const handleDragEnd = (e: React.DragEvent<HTMLSpanElement>) => {
