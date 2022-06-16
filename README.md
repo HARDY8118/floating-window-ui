@@ -3,7 +3,7 @@
 TypeScript component for floating resizable windows in React.
 <br />
 <br />
-![Screenshot 1](./screenshots/screenshot1.png "Screenshot 1")
+![Screenshot 1](https://raw.githubusercontent.com/HARDY8118/floating-window-ui/1e66cadcf1f5488ee66af5e9f2562a9416ad388e/screenshots/screenshot1.png "Screenshot 1")
 
 ---
 
