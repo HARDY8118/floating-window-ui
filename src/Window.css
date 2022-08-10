@@ -63,7 +63,5 @@ div.window-container
 }
 
 div.window-container > div.content {
-  overflow: auto;
-  background-color: white;
-  flex-grow: 1;
+  all: initial
 }
