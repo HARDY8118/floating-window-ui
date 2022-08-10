@@ -15,7 +15,7 @@ interface WindowProps {
     buttons?: {
       minimize?: boolean;
       maximize?: boolean;
-      close?: boolean;
+      close?: () => void;
     };
   };
 }
@@ -235,7 +235,14 @@ const Window: React.FC<WindowProps> = (props: WindowProps) => {
                   {maximizeIcon}
                 </span>
               )}
-              {<span className="windowButton">&#10799;</span>}
+              {!!properties.titleBar.buttons.close && (
+                <span
+                  className="windowButton"
+                  onClick={properties.titleBar.buttons.close}
+                >
+                  &#10799;
+                </span>
+              )}
             </span>
           )}
         </div>

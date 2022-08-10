@@ -93,7 +93,7 @@ If any property for *titleBar* is set in the window component, value for all *bu
 |------|------|---------|----------|-------------|
 |**minimize**|boolean|true|&cross;|Displaying minimize button|
 |**maximize**|boolean|true|&cross;|Displaying maximize button|
-|**close**|boolean|true|&cross;|Display close button. (Does nothing on click)|
+|**close**|()=>void|()=>{}|&cross;|Display close button. (Call provided function)|
 
 <br />
 <br />
