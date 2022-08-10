@@ -73,6 +73,7 @@ A floating window which can be dragged, minimized, maximized and moved across.
 |**left**|number|0|&cross;|Left position of window with repect to parent element in px|
 |**resizable**|boolean|false|&cross;|Make window resizable of not|
 |**titleBar**|object| |&cross;|Refer [Title Bar props](./README.md#title-bar-properties)|
+|**style**|object|{}|&cross|CSS styles applied to content window|
 
 ### Title Bar properties
 

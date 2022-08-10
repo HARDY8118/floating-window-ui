@@ -18,6 +18,7 @@ interface WindowProps {
       close?: () => void;
     };
   };
+  style?: React.CSSProperties;
 }
 
 const nextZIndex: () => number = () => {
@@ -57,6 +58,7 @@ const Window: React.FC<WindowProps> = (props: WindowProps) => {
         },
         props.titleBar
       ),
+      style: {},
     },
     props
   );
@@ -253,6 +255,7 @@ const Window: React.FC<WindowProps> = (props: WindowProps) => {
         style={{
           height: contentDisplay ? "auto" : 0,
           opacity: visibility,
+          ...properties.style,
         }}
       >
         {properties.children}

@@ -2,7 +2,7 @@ div.window-container {
   position: absolute;
   border: solid 1px black;
   --tilebar-height: 32px;
-  overflow: auto;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -13,9 +13,7 @@ div.window-container > div.title-bar {
   display: flex;
   flex-direction: row;
   cursor: default;
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: static;
 }
 
 div.window-container > div.title-bar > span.icon {
@@ -68,4 +66,5 @@ div.window-container
 div.window-container > div.content {
   all: initial;
   background-color: white;
+  overflow: scroll;
 }
