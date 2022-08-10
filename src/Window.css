@@ -13,6 +13,9 @@ div.window-container > div.title-bar {
   display: flex;
   flex-direction: row;
   cursor: default;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 div.window-container > div.title-bar > span.icon {
@@ -63,5 +66,6 @@ div.window-container
 }
 
 div.window-container > div.content {
-  all: initial
+  all: initial;
+  background-color: white;
 }
